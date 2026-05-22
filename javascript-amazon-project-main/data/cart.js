@@ -19,16 +19,17 @@ function saveToStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-export function addToCart(productId) {   
+export function addToCart(productId, quantity) {   
     let matchingItem;
     matchingItem = cart.find(itemCart => itemCart.productId === productId);
+    console.log(quantity);
 
     if(matchingItem) {
-        matchingItem.quantity += 1;
+        matchingItem.quantity += quantity;
     } else {
         cart.push({
         productId,
-        quantity: 1,
+        quantity,
         deliveryOptionId: '1',
     });
     }
